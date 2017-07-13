@@ -34,8 +34,10 @@ class CloudStorageServiceProvider extends ServiceProvider
             }
 
             if (array_key_exists('credentials', $config) && false === empty($config['credentials'])) {
-                $serviceBuilderConfig += ['keyFilePath' => $config['credentials']];
-                $optionalServiceBuilder = new ServiceBuilder($serviceBuilderConfig);
+		// Fix from: https://github.com/websightgmbh/l5-google-cloud-storage/issues/12
+		$adapterConfiguration += ['keyFilePath' => $config['credentials']];
+                //$serviceBuilderConfig += ['keyFilePath' => $config['credentials']];
+                //$optionalServiceBuilder = new ServiceBuilder($serviceBuilderConfig);
             }
 
             $adapter = new GoogleCloudStorageAdapter($optionalServiceBuilder, $adapterConfiguration);
