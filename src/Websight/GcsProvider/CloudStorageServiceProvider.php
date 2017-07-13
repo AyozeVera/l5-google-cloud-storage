@@ -43,4 +43,12 @@ class CloudStorageServiceProvider extends ServiceProvider
             return new Filesystem($adapter);
         });
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function register()
+    {
+        // Not needed
+    }
 }
